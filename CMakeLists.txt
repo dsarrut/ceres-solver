@@ -37,7 +37,22 @@ if (POLICY CMP0042)
   cmake_policy(SET CMP0042 NEW)
 endif()
 
+# --------------------------------------------------------------
+# Hunter
+include("cmake/HunterGate.cmake")
+HunterGate(
+  URL "https://github.com/ruslo/hunter/archive/v0.15.23.tar.gz"
+  SHA1 "ab53ab9ede1cba3b894ed9e17a26f091924f6d65"
+  )
+# --------------------------------------------------------------
+
 project(Ceres C CXX)
+
+# --------------------------------------------------------------
+# Hunter
+hunter_add_package(glog)
+hunter_add_package(Eigen)
+# --------------------------------------------------------------
 
 # Make CMake aware of the cmake folder for local FindXXX scripts,
 # append rather than set in case the user has passed their own
